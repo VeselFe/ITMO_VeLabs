@@ -1,0 +1,3 @@
+<div id="_next"
+<div class="panel-body">
+<div id="LEFT_CONTENT" class="panelno-border no-padding no-margin">

@@ -1,0 +1,337 @@
+<!DOCTYPE html><html><head><script>
+
+
+const kcContext = {
+    "social": {
+        "baseURI": {
+            "path": "\/auth",
+            "rawPath": "\/auth",
+            "rawSchemeSpecificPart": "\/auth?client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9&session_code=NMf5uRuL_wNzXh2JrVboZTjwAR_SNBIiIZQd-HGFSSA",
+            "opaque": false,
+            "query": "client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9&session_code=NMf5uRuL_wNzXh2JrVboZTjwAR_SNBIiIZQd-HGFSSA",
+            "schemeSpecificPart": "\/auth?client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9&session_code=NMf5uRuL_wNzXh2JrVboZTjwAR_SNBIiIZQd-HGFSSA",
+            "port": -1,
+            "absolute": false,
+            "rawQuery": "client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9&session_code=NMf5uRuL_wNzXh2JrVboZTjwAR_SNBIiIZQd-HGFSSA",
+        },
+        "providers": [
+            {
+                "displayName": "VK ID",
+                "providerId": "vkid",
+                "loginUrl": "\/auth/realms/itmo/broker/vkid/login?client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9&session_code=NMf5uRuL_wNzXh2JrVboZTjwAR_SNBIiIZQd-HGFSSA",
+                "iconClasses": "",
+                "alias": "vkid",
+            },
+            {
+                "displayName": "Яндекс ID",
+                "providerId": "yandex",
+                "loginUrl": "\/auth/realms/itmo/broker/yandex/login?client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9&session_code=NMf5uRuL_wNzXh2JrVboZTjwAR_SNBIiIZQd-HGFSSA",
+                "iconClasses": "",
+                "alias": "yandex",
+            },
+        ],
+    },
+    "auth": {
+        "showResetCredentials": false,
+        "authenticationSelections": [
+            {
+                "helpText": "auth-username-password-form-help-text",
+                "displayName": "auth-username-password-form-display-name",
+                "iconCssClass": "kcAuthenticatorDefaultClass",
+                "authExecId": "7db2448a-e998-4527-8831-184f67f677f9",
+                "authenticationExecution": {
+                    "authenticatorFlow": false,
+                    "conditional": false,
+                    "required": true,
+                    "enabled": true,
+                    "disabled": false,
+                    "id": "7db2448a-e998-4527-8831-184f67f677f9",
+                    "parentFlow": "283624ed-5c34-4b5e-8318-8097575d6330",
+                    "authenticator": "auth-username-password-form",
+                    "alternative": false,
+                    "requirement": {
+                        "stableIndex": 0,
+                    },
+                    "priority": 10,
+                },
+            },
+        ],
+        "showUsername": false,
+        "showTryAnotherWayLink": false,
+        /*auth.attemptedUsername excluded*/
+    },
+    "locale": {
+        "rtl": false,
+        "current": "русский",
+        "supported": [
+            {
+                "languageTag": "en",
+                "label": "английский (English)",
+                "url": "\/auth/realms/itmo/login-actions/authenticate?client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9&execution=7db2448a-e998-4527-8831-184f67f677f9&kc_locale=en",
+            },
+            {
+                "languageTag": "ru",
+                "label": "русский",
+                "url": "\/auth/realms/itmo/login-actions/authenticate?client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9&execution=7db2448a-e998-4527-8831-184f67f677f9&kc_locale=ru",
+            },
+        ],
+        "currentLanguageTag": "ru",
+    },
+    "login": {
+    },
+    "pageId": "login",
+    "url": {
+        "oauthAction": "\/auth/realms/itmo/login-actions/authenticate",
+        "resourcesPath": "\/auth/resources/18vz3/login/itmo-id",
+        "loginAction": "https://id.itmo.ru/auth/realms/itmo/login-actions/authenticate?session_code=NMf5uRuL_wNzXh2JrVboZTjwAR_SNBIiIZQd-HGFSSA&execution=7db2448a-e998-4527-8831-184f67f677f9&client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9",
+        "loginUrl": "\/auth/realms/itmo/login-actions/authenticate?client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9",
+        "resourcesCommonPath": "\/auth/resources/18vz3/common/keycloak",
+        "firstBrokerLoginUrl": "\/auth/realms/itmo/login-actions/first-broker-login?client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9",
+        "registrationUrl": "\/auth/realms/itmo/login-actions/registration?client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9",
+        "logoutConfirmAction": "\/auth/realms/itmo/protocol/openid-connect/logout/logout-confirm?client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9",
+        "registrationAction": "https://id.itmo.ru/auth/realms/itmo/login-actions/authenticate?session_code=NMf5uRuL_wNzXh2JrVboZTjwAR_SNBIiIZQd-HGFSSA&execution=7db2448a-e998-4527-8831-184f67f677f9&client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9",
+        "loginResetCredentialsUrl": "\/auth/realms/itmo/login-actions/reset-credentials?client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9",
+        "ssoLoginInOtherTabsUrl": "\/auth/realms/itmo/login-actions/restart?client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9&skip_logout=true",
+        "resourcesUrl": "\/auth/resources/18vz3?client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9/login/itmo-id",
+        "loginRestartFlowUrl": "\/auth/realms/itmo/login-actions/restart?client_id=isu&tab_id=JRY9b22H7Dk&client_data=eyJydSI6Imh0dHBzOi8vaXN1LmlmbW8ucnUvYXBpL3Nzby92MS9wdWJsaWMvbG9naW4_YXBleF9wYXJhbXM9cD0yMTQzOkxPR0lOOjExMjY3MDgwMDAzNjc0OCIsInJ0IjoiY29kZSJ9&skip_logout=false",
+        "oauth2DeviceVerificationAction": "\/auth/realms/itmo/login-actions/authenticate",
+    },
+    "authenticationSession": {
+        "tabId": "JRY9b22H7Dk",
+        "authSessionId": "8e5e7d44-c794-40fc-b822-122c91832fc1",
+        "authSessionIdHash": "rizL3Q6X/QiPt6ldG0VDwIAaoZqDTIJoHwUDgH6zLKo",
+    },
+    "messagesPerField": {
+        "get": function (fieldName) { if(fieldName === 'firstName'){ return ''; } if(fieldName === 'lastName'){ return ''; } if(fieldName === 'email'){ return ''; } if(fieldName === 'username' || fieldName === 'password' ){ return ''; } if(fieldName === 'password-confirm'){ return ''; } if(fieldName === 'global'){ return ''; } if(fieldName === 'totp'){ return ''; } if(fieldName === 'userLabel'){ return ''; } if(fieldName === 'recoveryCodeInput'){ return ''; } if(fieldName === 'termsAccepted'){ return ''; } if(fieldName === 'phone'){ return ''; } if(fieldName === 'middleName'){ return ''; } if(fieldName === 'birthdate'){ return ''; } if(fieldName === 'gender'){ return ''; } if(fieldName === 'tab_id'){ return ''; } if(fieldName === 'client_id'){ return ''; } if(fieldName === 'code'){ return ''; } },
+        "existsError": function (fieldName) { if(fieldName === 'firstName' ){ return false; }if(fieldName === 'lastName' ){ return false; }if(fieldName === 'email' ){ return false; }if(fieldName === 'username' || fieldName === 'password' ){ return false; } if(fieldName === 'password-confirm' ){ return false; }if(fieldName === 'global' ){ return false; }if(fieldName === 'totp' ){ return false; }if(fieldName === 'userLabel' ){ return false; }if(fieldName === 'recoveryCodeInput' ){ return false; }if(fieldName === 'termsAccepted' ){ return false; }if(fieldName === 'phone' ){ return false; }if(fieldName === 'middleName' ){ return false; }if(fieldName === 'birthdate' ){ return false; }if(fieldName === 'gender' ){ return false; }if(fieldName === 'tab_id' ){ return false; }if(fieldName === 'client_id' ){ return false; }if(fieldName === 'code' ){ return false; }},
+    },
+    "templateName": "login.ftl",
+    "client": {
+        "clientId": "isu",
+        "description": "Информационная система управления Университета ИТМО",
+        "baseUrl": "https://isu.ifmo.ru/",
+        "name": "ИСУ ИТМО",
+        "attributes": {
+            "request.object.signature.alg": "any",
+            "saml.force.post.binding": "false",
+            "saml.multivalued.roles": "false",
+            "post.logout.redirect.uris": "+",
+            "oauth2.device.authorization.grant.enabled": "false",
+            "backchannel.logout.revoke.offline.tokens": "false",
+            "saml.server.signature.keyinfo.ext": "false",
+            "use.refresh.tokens": "true",
+            "realm_client": "false",
+            "hide.in.console": "false",
+            "oidc.ciba.grant.enabled": "false",
+            "backchannel.logout.session.required": "true",
+            "backchannel.logout.url": "https://updaters.api.itmo.su/apex-sync/api/v1/session/end",
+            "client_credentials.use_refresh_token": "false",
+            "require.pushed.authorization.requests": "false",
+            "saml.client.signature": "false",
+            "request.object.encryption.enc": "any",
+            "dpop.bound.access.tokens": "false",
+            "id.token.as.detached.signature": "false",
+            "saml.assertion.signature": "false",
+            "request.object.encryption.alg": "any",
+            "client.introspection.response.allow.jwt.claim.enabled": "false",
+            "saml.encrypt": "false",
+            "standard.token.exchange.enabled": "false",
+            "design.icon.url": "https://isu.ifmo.ru/i/libraries/frontend/logo/isu.png",
+            "logoUri": "https://isu.ifmo.ru/i/libraries/frontend/logo/isu.png",
+            "saml.server.signature": "false",
+            "exclude.session.state.from.auth.response": "false",
+            "client.use.lightweight.access.token.enabled": "false",
+            "saml.artifact.binding": "false",
+            "request.object.required": "not required",
+            "access.token.header.type.rfc9068": "false",
+            "saml_force_name_id_format": "false",
+            "tls.client.certificate.bound.access.tokens": "false",
+            "saml.authnstatement": "false",
+            "display.on.consent.screen": "false",
+            "token.response.type.bearer.lower-case": "false",
+            "saml.onetimeuse.condition": "false",
+        },
+    },
+    "passwordPolicies": {
+        "passwordHistory": 3,
+        "notEmail": true,
+        "lowerCase": 1,
+        "length": 6,
+        "notUsername": true,
+        "upperCase": 1,
+        "digits": 1,
+    },
+    "realm": {
+        "displayName": "ITMO ID",
+        "registrationAllowed": true,
+        "displayNameHtml": "ITMO ID",
+        "resetPasswordAllowed": true,
+        "resetCredentialsActionTokenLifespanMinutes": 180,
+        "password": true,
+        "actionTokenGeneratedByUserLifespanMinutes": 180,
+        "internationalizationEnabled": true,
+        "idpVerifyAccountLinkActionTokenLifespanMinutes": 180,
+        "verifyEmailActionTokenLifespanMinutes": 180,
+        "loginWithEmailAllowed": true,
+        "duplicateEmailsAllowed": false,
+        "editUsernameAllowed": true,
+        "name": "itmo",
+        "rememberMe": true,
+        "registrationEmailAsUsername": true,
+        "identityFederationEnabled": true,
+    },
+    "darkMode": false,
+    "scripts": [
+    ],
+    "lang": "ru",
+    "properties": {
+        "KEYCLOAKIFY_SPA_DEV_SERVER_PORT": "",
+    },
+};
+kcContext.keycloakifyVersion = "11.8.22";
+kcContext.themeVersion = "1.0.0";
+kcContext.themeType = "login";
+kcContext.themeName = "itmo-id";
+kcContext.pageId = "login.ftl";
+kcContext.ftlTemplateFileName = "login.ftl";
+
+
+kcContext["x-keycloakify"] = {};
+
+kcContext["x-keycloakify"].resourcesPath = "/auth/resources/18vz3/login/itmo-id";
+
+{
+    var messages = {};
+        messages["auth-username-password-form-help-text"] = decodeHtmlEntities("Sign in by entering your username and password.");
+        messages["auth-username-password-form-display-name"] = decodeHtmlEntities("Username and password");
+    kcContext["x-keycloakify"].messages = messages;
+}
+
+if( 
+    kcContext.url instanceof Object &&
+    typeof kcContext.url.resourcesPath === "string"
+){
+    kcContext.url.resourcesCommonPath = kcContext.url.resourcesPath + "/resources-common";
+}
+
+if( kcContext.messagesPerField ){
+    var existsError_singleFieldName = kcContext.messagesPerField.existsError;
+    kcContext.messagesPerField.existsError = function (){
+        for( let i = 0; i < arguments.length; i++ ){
+            if( existsError_singleFieldName(arguments[i]) ){
+                return true;
+            }
+        }
+        return false;
+    };
+    kcContext.messagesPerField.exists = function (fieldName) {
+        return kcContext.messagesPerField.get(fieldName) !== "";
+    };
+    kcContext.messagesPerField.printIfExists = function (fieldName, text) {
+        return kcContext.messagesPerField.exists(fieldName) ? text : undefined;
+    };
+    kcContext.messagesPerField.getFirstError = function () {
+        for( let i = 0; i < arguments.length; i++ ){
+            const fieldName = arguments[i];
+            if( kcContext.messagesPerField.existsError(fieldName) ){
+                return kcContext.messagesPerField.get(fieldName);
+            }
+        }
+    };
+}
+attributes_to_attributesByName: {
+    if( !kcContext.profile ){
+        break attributes_to_attributesByName;
+    }
+    if( !kcContext.profile.attributes ){
+        break attributes_to_attributesByName;
+    }
+    var attributes = kcContext.profile.attributes;
+    delete kcContext.profile.attributes;
+    kcContext.profile.attributesByName = {};
+    attributes.forEach(function(attribute){
+        kcContext.profile.attributesByName[attribute.name] = attribute;
+    });
+}
+
+redirect_to_dev_server: {
+
+    switch(kcContext.themeType){
+        case "login":
+            break redirect_to_dev_server;
+        case "account":
+            if( kcContext.pageId !== "index.ftl" ){
+                break redirect_to_dev_server;
+            }
+            break;
+        case "admin":
+            break;
+        default: 
+            break redirect_to_dev_server;
+    }
+
+    const devSeverPort = kcContext.properties.KEYCLOAKIFY_SPA_DEV_SERVER_PORT;
+
+    if( !devSeverPort ){
+        break redirect_to_dev_server;
+    }
+
+    const redirectUrl = new URL(window.location.href);
+
+    redirectUrl.port = devSeverPort;
+
+    delete kcContext.msgJSON;
+
+    console.log(kcContext);
+
+    redirectUrl.searchParams.set("kcContext", encodeURIComponent(JSON.stringify(kcContext)));
+
+    window.location.href = redirectUrl.toString();
+
+}
+
+
+window.kcContext = kcContext;
+
+
+    {
+        const script = document.createElement("script");
+        script.type = "importmap";
+        script.textContent = JSON.stringify({
+          imports: {
+            "rfc4648": kcContext.url.resourcesCommonPath + "/node_modules/rfc4648/lib/rfc4648.js"
+          }
+        }, null, 2); 
+
+        document.head.appendChild(script);
+    }
+
+function decodeHtmlEntities(htmlStr){
+    var element = decodeHtmlEntities.element;
+    if (!element) {
+        element = document.createElement("textarea");
+        decodeHtmlEntities.element = element;
+    }
+    element.innerHTML = htmlStr;
+    return element.value;
+}
+
+
+</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="/auth/resources/18vz3/login/itmo-id/dist/site.webmanifest">
+    <link rel="mask-icon" href="/auth/resources/18vz3/login/itmo-id/dist/safari-pinned-tab.svg" color="#000000">
+    <link rel="apple-touch-icon" sizes="180x180" href="/auth/resources/18vz3/login/itmo-id/dist/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/auth/resources/18vz3/login/itmo-id/dist/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/auth/resources/18vz3/login/itmo-id/dist/favicon-16x16.png">
+    <link type="text/css" rel="stylesheet" href="https://cdn.itmo.pro/itmoid/style/bg.css">
+  <script type="module" crossorigin="" src="/auth/resources/18vz3/login/itmo-id/dist/assets/index-Dfo3IqNb.js"></script>
+</head>
+
+<body>
+<div id="root"></div>
+
+
+</body></html>

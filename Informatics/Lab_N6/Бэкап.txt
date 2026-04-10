@@ -1,0 +1,176 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+%\setmainfont{literaturnayaplain.ttf}
+\setmainfont{literaturnaya-plain-001-001.otf}
+\newfontfamily\kvantfontkurs{Literaturnayaitalic.ttf}
+\newfontfamily\kvantfontpicture{Literaturnayabold.ttf}
+\usepackage[english,russian]{babel} 
+\usepackage{multicol}
+\usepackage[left=1cm, right=1.2cm, top=0.8cm, bottom=2cm]{geometry}
+
+
+\usepackage{array}
+\newcolumntype{V}{@{\hspace{4pt}\vrule height 12pt depth 5pt width 0.4pt\hspace{4pt}}}
+
+\usepackage{tikz}
+\usepackage{caption} % даёт \captionof
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{table}[t!]
+    \renewcommand{\arraystretch}{1.6}
+    \centering
+    \resizebox{ 0.90\textwidth }{!}{ % 12.5 23.5
+    \begin{tabular}{| p{1,5cm} V c V c V c V c V c V c V c V c V c V c V c V c V c V c V c V c V c V c |}
+    %{|p{1,5cm}|c|c\hspace@{\vrule height 12pt depth 4pt width 0.4pt}\hspace c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        {\kvantfontkurs n} & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 \\
+        \hline
+        {\kvantfontkurs P}({\kvantfontkurs n}) & 3 & 5 & 7 & 8 & 10 & 11 & 13 & 14 & 15 & 17 & 18 & 19 & 20 & 21 & 23 & 24 & 25 & 26 \\
+        \hline
+        {\kvantfontkurs I}({\kvantfontkurs n}) & 3 & 5 & 7 & 9 & 10 & 11 & 13 & 14 & 16 & 17 & 18 & 19 & 20 & 21 & 23 & 24 & 25 & 26 \\
+        \hline
+        {\kvantfontkurs Q}({\kvantfontkurs n}) & 4 & 5 & 8 & 9 & 10 & 11 & 14 & 15 & 16 & 17 & 18 & 19 & 20 & 21 & 24 & 25 & 26 & 27 \\
+        \hline
+        
+    \end{tabular}
+    }
+\end{table}
+
+
+
+\begin{figure}[h]
+
+
+    \begin{minipage}[t]{0.43\textwidth}
+    {  \setlength{\parindent}{0.5cm} % абзацный отступ
+       \setlength{\parskip}{0pt}
+        \fontsize{14pt}{5pt}\selectfont
+        \noindent
+        могут осуществляться, как видно из приведенной таблицы.
+    
+        Как именно ведет себя {\kvantfontkurs I}\ ({\kvantfontkurs n}), мы расскажем подробнее в другой раз. А пока попытайтесь разобраться в этом самостоятельно. Попробуйте решить также следующие задачи.
+        \vspace{5mm}
+        \fontsize{12pt}{5pt}\selectfont 
+        
+        1. Проверить приведенную выше таблицу. 
+        
+        У\,к\,а\,з\,а\,н\,и\,е. Наметим путь решения этой задачи для {\kvantfontkurs n} = 20. В этом случае {\kvantfontkurs Р} [{\kvantfontkurs n}]={\kvantfontkurs P} [20] = 26. 
+        
+        Разделим 20 шахматистов на две группы: в первой группе 16 человек, во второй — четыре. В первой группе определим стандартным способом (см. S 1 и S 2 главы Ш) 1-го призера А и 2-го призера В. На это уйдет 15 + 3 = 18 партий. При этом В выиграет не больше, чем у четырех человек (см. S 3).
+        
+        Во второй группе определим сильнейшего С по олимпийской системе (3 партии). При этом С выиграет у двоих.
+        \vspace{15mm}
+    
+        % ---- Начало картинки ----
+        \begin{minipage}{0.4\columnwidth}
+           \begin{tikzpicture}
+              \coordinate (Z) at (0,0);
+              \coordinate (A) at ($(Z) + (0,0)$);
+              \coordinate (B) at ($(Z) + (0.25,-1.5)$);
+              \coordinate (C) at ($(Z) + (1.5,0.25)$);
+              \coordinate (D) at ($(Z) + (1.75,-1.25)$);
+              \coordinate (E) at ($(Z) + (3.5,-1.1)$);
+              \coordinate (F) at ($(Z) + (3.8,-3.0)$);
+              
+              \draw[-{Stealth[length=3mm,width=2mm]}, line width=0.4pt] (A) -- (B);
+              \draw[-{Stealth[length=3mm,width=2mm]}, line width=0.4pt] (C) -- (B);
+              \draw[-{Stealth[length=3mm,width=2mm]}, line width=0.4pt] (C) -- (D);
+              \draw[-{Stealth[length=3mm,width=2mm]}, line width=0.4pt] (C) -- (E);
+              \draw[-{Stealth[length=3mm,width=2mm]}, line width=0.4pt] (E) -- (F);
+              \node[below left]  at (A) {$A$};
+              \node[above left] at (B) {$B$};
+              \node[above left] at (C) {$C$};
+              \node[above right] at (D) {$D$};
+              \node[above right] at (E) {$E$};
+              \node[above right] at (F) {$F$};    
+            
+              \path[fill=white,draw=black] (A) circle (0.5mm);
+              \path[fill=white,draw=black] (B) circle (0.5mm);
+              \path[fill=white,draw=black] (C) circle (0.5mm);
+              \path[fill=white,draw=black] (D) circle (0.5mm);
+              \path[fill=white,draw=black] (E) circle (0.5mm);
+              \path[fill=white,draw=black] (F) circle (0.5mm);
+    
+            \end{tikzpicture}
+          \captionof{figure}{}
+          \label{fig:one}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.36\columnwidth}
+           \centering
+           \begin{tikzpicture}
+            
+              \coordinate (A_2) at ($(E) + (1.25,0.25)$);
+              \coordinate (B_2) at ($(A_2) + (0.3,-1.9)$);
+              \coordinate (C_2) at ($(A_2) + (2.0,0.2)$);
+              \coordinate (E_2) at ($(A_2) + (2.3,-1.6)$);
+            
+              \draw[-{Stealth[length=3mm,width=2mm]}, line width=0.4pt] (A_2) -- (B_2);
+              \draw[-{Stealth[length=3mm,width=2mm]}, line width=0.4pt] (C_2) -- (B_2);
+              \draw[-{Stealth[length=3mm,width=2mm]}, line width=0.4pt] (A_2) -- (E_2);
+              \draw[-{Stealth[length=3mm,width=2mm]}, line width=0.4pt] (C_2) -- (E_2);
+              
+              \path[fill=white,draw=black] (A_2) circle (0.5mm);
+              \path[fill=white,draw=black] (B_2) circle (0.5mm);
+              \path[fill=white,draw=black] (C_2) circle (0.5mm);
+              \path[fill=white,draw=black] (E_2) circle (0.5mm);
+              
+              \node[above left] at (A_2) {$A$};    
+              \node[above left] at (B_2) {$B$};    
+              \node[above right] at (C_2) {$C$};    
+              \node[above right] at (E_2) {$E$};
+            
+            \end{tikzpicture}
+        \vspace{10mm}
+        {%
+          \kvantfontpicture
+          \captionof{figure}{Рис.~1.\ Векторное дерево}
+        }
+        \end{minipage}
+        
+        % ---- Конец картинки ----
+        \vspace{5mm}
+        Следующую (22-ю) дартию проведем между B и С. Если победит В, то ясно, что А — чемпион, В — второй призер, а на третье место претендуют пятеро, проигравших В. За оставшиеся 4 партии можно найти среди них третьего призера. \\
+      % конец левой колонки
+    }
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.47\textwidth}
+    {  \setlength{\parindent}{0.9cm} % абзацный отступ
+       \setlength{\parskip}{0pt}
+       \fontsize{12pt}{10pt}\selectfont
+        Пусть, наоборот, победит {\kvantfontkurs С}. Тогда возникнет \ следующая \ ситуация \ (см. рис. 1): на призовые места претендуют шахматисты {\kvantfontkurs А, В, С, D, Е} и {\kvantfontkurs F} (стрелки ведут от победителей к побежденным). Проведем 23-ю партию между {\kvantfontkurs D} и {\kvantfontkurs Е}; пусть в этой партии победит {\kvantfontkurs E} (случай, когда победит {\kvantfontkurs D}, проще и рассматривается аналогично).
+        
+        24-ю партию проведем между \ {\kvantfontkurs А} и \ {\kvantfontkurs E}. Если выиграет Е, то С — чемпион, Е — второй призер, а на третье место претендуют А, D и F. За оставшиеся 2 партии найдем среди них третьего призера. 
+        
+        Если 24-ю партию выиграет А, то (см. рис. 2)на первые два места претендуют {\kvantfontkurs А} и {\kvantfontkurs С}, на третье — {\kvantfontkurs В} и {\kvantfontkurs Е}. Проведя две партии (между A и С и между В и Е), мы определим 1-го, 2-го и 3-го призеров. Итак, I(20)=26=Р(20). 
+        
+        Только что приведенные правила резко отличаются от стандартных правил из главы III. По стандартным правилам шахматисты, проигравшие хоть одну партию, не участвуют в следующих играх до тех пор, пока не определится \ чемпион. \ 
+        Только отказавшись от этого, \ нам удалось определить 1-го, 2-го и \ 3-го призеров \ среди \ 20 шахматистов за 26 (а не за 27) партий. \
+        
+        2. Доказать, \ что 1-го и 2-го призеров среди {\kvantfontkurs n} шахматистов наверняка можно определить за \ {\kvantfontkurs l} [{\kvantfontkurs n}] \  + {\kvantfontkurs n} — 2 партий \ и \ может не удасться определить \ за \ меньшее число партий. 
+        
+        3. Пусть мы хотим определить среди {\kvantfontkurs n} шахматистов {\kvantfontkurs k} сильнейших (1-го, 2-го, ..., {\kvantfontkurs k}-го призеров). Докажите, что
+        
+        а) \ это \ \ наверняка \ можно \ сделать за (k—1) {\kvantfontkurs l} [{\kvantfontkurs n}] + {\kvantfontkurs n}—{\kvantfontkurs k} партий; 
+        
+        б) если 
+        \[ 
+            R < l [n (n-l)... (n-k+2)] + n-k \text{,}
+        \]
+    
+        \noindent
+        то результаты партий могут оказаться такими, что это не удастся сделать за {\kvantfontkurs R} партий. 
+        
+        У\,к\,а\,з\,а\,н\,и\,е. В задаче б) мы рекомендуем рассуждать так же, как в главе II, pacсматривая \ \ «команды» \ \(A_1, \ A_2, ..., A_{k-1}\), состоящие из {\kvantfontkurs k}—1 участника. Общее число таких команд равно {\kvantfontkurs n} ({\kvantfontkurs n}—1)... ({\kvantfontkurs n}—{\kvantfontkurs k}+2).
+      % здесь текст правой колонки
+      }
+    \end{minipage}
+\end{figure}
+
+\end{document}

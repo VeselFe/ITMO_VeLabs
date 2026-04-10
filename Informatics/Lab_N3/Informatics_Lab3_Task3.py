@@ -1,0 +1,44 @@
+# Author = Veselov Fedor Evgenievich
+# Group = P3132
+# Date = 05.10.2025
+# 501787 % 3 = 1
+#
+
+
+import re
+
+for test_num in range(1,6):
+    print(" --------- Test №" + str(test_num) + " --------- ")
+    with open('Tests_for_2/input_' + str(test_num) +'.txt', 'r', encoding='utf-8') as file:
+        case = file.readline()
+        text = file.read()
+
+    print(text)
+    words = text.split()
+    word_numb = int(case[-2])
+    print("Номер шаблона падежа: " + str(word_numb))
+
+    patern = r'\b(\w\w+)(ый|ий|ой|ая|яя|ое|ее|ые|ие|ого|его|ой|ей|ому|ему|ую|юю|ым|им|ыми|ими|ом|ем|ых|их)'
+    words = re.findall(patern, text)
+    words = [(word.lower(), ending.lower()) for word, ending in words]
+    roots = [it[0] for it in words]
+
+    changes = []
+    for i in words:
+        root_i = i[0]
+        if roots.count(root_i) > 2:
+            changes.append(i)
+
+    form = changes[word_numb - 1][1]
+    unic = []
+    for i in changes:
+        if not i[0] in unic:
+            unic.append(i[0])
+    def repl( x ):
+        return x[1] + form + '(!)'
+
+    for ch_root in unic:
+        patern = r'\b(' + ch_root + ')(ый|ий|ой|ая|яя|ое|ее|ые|ие|ого|его|ой|ей|ому|ему|ую|юю|ым|им|ыми|ими|ом|ем|ых|их)'
+        text = re.sub(patern, repl, text, flags=re.IGNORECASE)
+    print("Измененный текст (Измененные окончания обозначены !):")
+    print(text)

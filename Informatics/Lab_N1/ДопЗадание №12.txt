@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <algorithm>
+
+int div_m10( int n )
+{
+    if( n >= 0 )
+        return n / 10 * -1;
+    else
+        return ceil(abs(n) / 10.0);
+}
+
+test
+int mod_m10( int n )
+{
+    if( n >= 0 )
+        return n % 10;
+    else
+        return 10 - abs(n % 10);
+}gtt
+
+std::string convert( int x )
+{
+    std::string s = "";
+    while(abs(x) > 0)
+    {
+        s = std::to_string(mod_m10(x % -10)) + s;
+        x = div_m10(x);
+    }
+    return s;
+}
+
+int main( void )
+{
+    int n;
+    std::cin >> n;
+    std::cout << n << "(10) -> " << convert(n) << "(-10)" << std::endl;
+}
+
+
+

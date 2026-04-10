@@ -1,0 +1,17 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel} % можно просто [russian]
+
+
+\title{ЛР_6}
+\author{Фэ Вэ}
+\date{December 2025}
+
+\begin{document}
+
+
+
+
+\end{document}

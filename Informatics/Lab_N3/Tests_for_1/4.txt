@@ -1,0 +1,20 @@
+<section id="module-re">
+<span id="re-regular-expression-operations"></span><h1><code class="xref py py-mod docutils literal notranslate"><span class="pre">re</span></code> — Regular expression operations<a class="headerlink" href="#module-re" title="Link to this heading">¶</a></h1>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="re.Match.lastindex">
+</section>
+<section id="checking-for-a-pair">
+</section>
+<section id="simulating-scanf">
+<h3>Simulating scanf()<a class="headerlink" href="#simulating-scanf" title="Link to this heading">¶</a></h3>
+<p id="index-40">Python does not currently have an equivalent to <code class="xref c c-func docutils literal notranslate"><span class="pre">scanf()</span></code>.  Regular
+expressions are generally more powerful, though also more verbose, than
+<code class="xref c c-func docutils literal notranslate"><span class="pre">scanf()</span></code> format strings.  The table below offers some more-or-less
+equivalent mappings between <code class="xref c c-func docutils literal notranslate"><span class="pre">scanf()</span></code> format tokens and regular
+expressions.</p>
+<section id="search-vs-match">
+<span id="id4"></span><h3>search() vs. match()<a class="headerlink" href="#search-vs-match" title="Link to this heading">¶</a></h3>
+<section id="making-a-phonebook">
+<div role="list" class="citation-list">
+<div class="citation" id="frie09" role="doc-biblioentry">
+<div id="sidebarbutton" title="Collapse sidebar">

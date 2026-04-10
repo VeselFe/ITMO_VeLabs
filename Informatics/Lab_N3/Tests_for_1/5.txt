@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Пример 5</title>
+</head>
+<body>
+    <h1 id="main-title">Заголовок</h1>
+    <p id="intro">Интро</p>
+    <div id="content">
+        <p id="paragraph1">Первый параграф.</p>
+        <p id="paragraph2">Второй параграф.</p>
+    </div>
+</body>
+</html>
