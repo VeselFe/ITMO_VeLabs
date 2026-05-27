@@ -120,7 +120,7 @@ PROGRAMM_WHILE: LD CURLINE
                 BEQ RIGHT_BRACKET_FUNC
                 JUMP PROGRAMM_WHILE
         FINISH: HLT
-CHECK_END:      word 0xFFF
+CHECK_END:      word 0x5FF
 BIGGER_FUNC:    LD DATA
                 CMP CHECK_END
                 BEQ ERROR
