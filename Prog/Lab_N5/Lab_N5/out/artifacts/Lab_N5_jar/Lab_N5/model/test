@@ -1,0 +1,113 @@
+        public void updateName( String newName )
+        {
+            if (newName == null || newName.trim() == "") { throw new CreationException("Некорректные данные для создания: поле 'имя' некорректно"); }
+            this.name = newName;            
+        }
+        public void updateCoordinates( String XY )
+        {
+            if (XY == null || XY.trim().isEmpty()) {
+                throw new CreationException("Некорректные данные для создания: поле 'Координаты' некорректно");
+            }
+            String[] inputCoord = XY.trim().split("\\s+");
+            if (inputCoord.length != 2)
+            {
+                throw new CreationException("Координаты: ожидается 2 числа(X Y)");
+            }
+            Double X = null;
+            double Y;
+            try
+            {
+                X = Double.parseDouble(inputCoord[0]);
+                Y = Double.parseDouble(inputCoord[1]);
+            } catch (NumberFormatException e) { throw new CreationException("Некорректные данные для создания: поле 'Координаты' некорректно"); }
+
+            coordinates = new Coordinates(X, Y);            
+        }
+        public void updateStudCount( String newStrStudCount )
+        {
+            if (newStrStudCount == null || newStrStudCount.trim().isEmpty())
+            {
+                throw new CreationException("Некорректные данные для создания: поле 'Количество студентов' некорректно");
+            }
+            Integer newStudCount = null;
+            try
+            {
+                newStudCount = Integer.valueOf(newStrStudCount);
+            } catch (NumberFormatException e) { throw new CreationException("Некорректные данные для создания: поле 'Количество студентов' некорректно"); }
+            if ( newStudCount <= 0 ) { throw new CreationException("Некорректные данные для создания: поле 'Количество студентов' некорректно: Значение должно быть больше нуля");}
+
+            studentsCount = newStudCount;            
+        }
+        public void updateStudCount( Integer newStudCount )
+        {
+            if ( newStudCount == null || newStudCount <= 0 )
+            {
+                throw new CreationException("Некорректные данные для создания: поле 'Количество студентов' некорректно");
+            }
+            studentsCount = newStudCount;            
+        }
+        public void updateShBeExp( String newStrShBeExp )
+        {
+            if (newStrShBeExp == null || newStrShBeExp.trim().isEmpty())
+            {
+                throw new CreationException("Некорректные данные для создания: поле 'Количество студентов на отчисление' некорректно");
+            }
+            Long newShBeExp = null;
+            try
+            {
+                newShBeExp = Long.valueOf(newStrShBeExp);
+            } catch (NumberFormatException e) { throw new CreationException("Некорректные данные для создания: поле 'Количество студентов на отчисление' некорректно"); }
+            if ( newShBeExp <= 0 ) { throw new CreationException("Некорректные данные для создания: поле 'Количество студентов на отчисление' некорректно: Значение должно быть больше нуля");}
+
+            shouldBeExpelled = newShBeExp;            
+        }
+        public void updateShBeExp( Long newShBeExp )
+        {
+            if ( newShBeExp == null || newShBeExp <= 0 )
+            {
+                throw new CreationException("Некорректные данные для создания: поле 'Количество студентовна отчисление' некорректно");
+            }
+            shouldBeExpelled = newShBeExp;            
+        }
+        public void updateFormOfEdu( String newStrForm )
+        {
+            if (newStrForm == null || newStrForm.trim().isEmpty()) {
+                throw new CreationException("Некорректные данные для создания: поле 'Форма обучения' некорректно");
+            }
+            FormOfEducation newForm = null;
+            try
+            {
+                newForm = FormOfEducation.valueOf(newStrForm.toUpperCase());
+            }
+            catch (IllegalArgumentException e)
+            {
+                throw new CreationException("Некорректные данные для создания: поле 'Форма обучения' некорректно");
+            }
+
+            formOfEducation = newForm;            
+        }
+        public void updateSem( String newStrSem )
+        {
+            if (newStrSem == null || newStrSem.trim().isEmpty()) {
+                throw new CreationException("Некорректные данные для создания: поле 'Семестр' некорректно");
+            }
+            Semester newSem = null;
+            try
+            {
+                newSem = Semester.valueOf(newStrSem.toUpperCase());
+            }
+            catch (IllegalArgumentException e)
+            {
+                throw new CreationException("Некорректные данные для создания: поле 'Семестр' некорректно");
+            }
+
+            semesterEnum = newSem;            
+        }
+        public void updateAdmin( Person newAdmin )
+        {
+            if( newAdmin == null )
+            {
+                throw new CreationException("Некорректные данные для создания: поле 'Админ группы' некорректно: поле должно быть заполнено!");
+            }
+            groupAdmin = newAdmin;      
+        }

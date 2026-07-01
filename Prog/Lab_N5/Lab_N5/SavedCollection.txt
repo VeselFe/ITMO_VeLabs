@@ -1,0 +1,46 @@
+<studyGroups>
+  <entry>
+    <long>25</long>
+    <group id="2">
+      <name>Test_id</name>
+      <coordinates>
+        <x>20.0</x>
+        <y>234.0</y>
+      </coordinates>
+      <creationDate>2026-03-17T23:41:41.0095397+03:00[Europe/Moscow]</creationDate>
+      <studentsCount>234</studentsCount>
+      <shouldBeExpelled>25</shouldBeExpelled>
+      <formOfEducation>DISTANCE_EDUCATION</formOfEducation>
+      <semesterEnum>FIFTH</semesterEnum>
+      <groupAdmin>
+        <name>Yamaha</name>
+        <birthday>1988-02-02T16:19:20</birthday>
+        <weight>88.0</weight>
+        <passportID></passportID>
+        <nationality>USA</nationality>
+      </groupAdmin>
+    </group>
+  </entry>
+  <entry>
+    <long>31</long>
+    <group id="4">
+      <name>ewofn</name>
+      <coordinates>
+        <x>-1</x>
+        <y>24.0</y>
+      </coordinates>
+      <creationDate>2026-03-04T18:19:55.1212895+03:00[Europe/Moscow]</creationDate>
+      <studentsCount>67</studentsCount>
+      <shouldBeExpelled>13</shouldBeExpelled>
+      <formOfEducation>EVENING_CLASSES</formOfEducation>
+      <semesterEnum>FIfTH</semesterEnum>
+      <groupAdmin>
+        <name>gjtr</name>
+        <birthday>2000-01-01T19:19:19</birthday>
+        <weight>2.17</weight>
+        <passportID>13424901571</passportID>
+        <nationality>USa</nationality>
+      </groupAdmin>
+    </group>
+  </entry>
+</studyGroups>

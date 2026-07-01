@@ -1,0 +1,20 @@
+package ru.itmo.server.serverInterfaces;
+
+import ru.itmo.lab.common.model.Person;
+import ru.itmo.lab.common.model.StudyGroup;
+import ru.itmo.lab.common.myRecords.UpdatedFieldDescriptor;
+import ru.itmo.server.dao.StudyGroupDAO;
+
+public interface CommandArgs
+{
+    String getCmdName();
+    Long getKey();
+    String getStringArg();
+    StudyGroup getGroup();
+    UpdatedFieldDescriptor getUpdatedField();
+    Person getAdmin();
+    String getOwner();
+    long getOwnerID();
+    void setOwnerID( long id );
+    StudyGroupDAO getDBManager();
+}

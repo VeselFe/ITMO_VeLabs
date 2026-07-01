@@ -1,0 +1,52 @@
+package ru.itmo.server.manager.serverLogic;
+
+import ru.itmo.lab.common.commonNet.Request;
+import ru.itmo.server.dao.StudyGroupDAO;
+import ru.itmo.server.serverInterfaces.CommandArgs;
+import ru.itmo.lab.common.model.Person;
+import ru.itmo.lab.common.model.StudyGroup;
+import ru.itmo.lab.common.myRecords.UpdatedFieldDescriptor;
+
+public class RequestAdapter implements CommandArgs
+{
+    private final Request request;
+    private long ownerId;
+    private final StudyGroupDAO dbManager;
+
+    RequestAdapter( Request request, StudyGroupDAO dbManager )
+    {
+        this.request = request;
+        this.dbManager = dbManager;
+    }
+
+    @Override
+    public String getCmdName() { return request.getCommandType(); }
+
+    @Override
+    public Long getKey() { return request.getIdArg(); }
+
+    @Override
+    public String getStringArg() { return request.getArgument(); }
+
+    @Override
+    public StudyGroup getGroup() { return request.getGroup(); }
+
+    @Override
+    public Person getAdmin() { return request.getAdmin(); }
+
+    @Override
+    public String getOwner() { return request.getLogin(); }
+
+    @Override
+    public UpdatedFieldDescriptor getUpdatedField() { return request.getUpdatedField(); }
+
+    @Override
+    public long getOwnerID() { return ownerId; }
+
+    @Override
+    public void setOwnerID( long id )
+    { ownerId = id; }
+
+    @Override
+    public StudyGroupDAO getDBManager() { return dbManager; }
+}

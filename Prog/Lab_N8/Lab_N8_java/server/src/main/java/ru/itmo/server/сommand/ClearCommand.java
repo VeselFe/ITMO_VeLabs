@@ -1,0 +1,53 @@
+package ru.itmo.server.сommand;
+
+import org.slf4j.LoggerFactory;
+import ru.itmo.lab.common.commonNet.UpdateNotification;
+import ru.itmo.server.serverInterfaces.Command;
+import ru.itmo.server.serverInterfaces.CommandArgs;
+import ru.itmo.server.serverInterfaces.ExecuteResult;
+import ru.itmo.lab.common.myExceptions.CommandException;
+import ru.itmo.server.ioHandlers.CommandResult;
+import ru.itmo.server.manager.collection.CollectionManager;
+import ru.itmo.server.serverNetManager.ConnectionRegistry;
+
+/**
+ * Команда для очистки коллекции
+ */
+public class ClearCommand implements Command
+{
+    private CollectionManager collection;
+    public ClearCommand( CollectionManager newCollection )
+    {
+        collection = newCollection;
+    }
+
+    @Override
+    public ExecuteResult execute( CommandArgs args )
+    {
+        try
+        {
+            collection.clearCollection( args.getDBManager(), args.getOwnerID() );
+
+            UpdateNotification notification = new UpdateNotification( collection.getStudyGroups() );
+            ConnectionRegistry.broadcast( notification );
+
+            return new CommandResult.Builder()
+                    .setSuccess( true )
+                    .setMessage("Из коллекции успешно удалены все элементы данного пользователя!")
+                    .buildCommandResult();
+        }
+        catch( Exception e )
+        {
+            String errorMessage = "Возникла ошибка при попытке очистить коллекцию: " + e.getMessage();
+            LoggerFactory.getLogger(ClearCommand.class).error(errorMessage);
+            throw new CommandException(errorMessage);
+        }
+    }
+    @Override
+    public String getName() { return "clear"; }
+    @Override
+    public String getDescription()
+    {
+        return "очистить коллекцию";
+    }
+}

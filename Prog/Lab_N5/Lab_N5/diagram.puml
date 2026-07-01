@@ -1,0 +1,497 @@
+@startuml
+interface manager.InvokerActions {
++ void initIOput(IO_Handler)
++ void addCommand(String,Command)
++ void executeCommand(String)
++ Map<String,Command> getCommands()
+}
+
+class terminal.StudyGroupReader {
+- IO_Handler reader
++ StudyGroup readStudygroup()
+}
+
+
+class myRecords.Lab5FieldDescriptor {
++ {static} List<FieldDescriptor> NEW_PERSON_FIELDS
++ {static} List<FieldDescriptor> NEW_GROUP_FIELDS
++ {static} List<FieldDescriptor> UPDATED_FIELDS
+}
+
+class myExceptions.CommandException {
+}
+enum myEnums.FormOfEducation {
++  DISTANCE_EDUCATION
++  FULL_TIME_EDUCATION
++  EVENING_CLASSES
+}
+
+class сommand.ClearCommand {
+- CollectionManager collection
++ void execute(IO_Handler)
++ String getName()
++ String getDescription()
+}
+
+
+interface сommand.CommandWithArgs {
+~ void getArgs(String)
+}
+
+class myRecords.FieldDescriptor {
+- String name
+- String request
++ String request()
++ String name()
+}
+
+
+class сommand.ExecuteScriptCommand {
+- String fileName
+- CollectionManager collection
+- {static} List<String> openedFiles
+- String scriptArg
++ void execute(IO_Handler)
++ void getArgs(String)
++ String getName()
++ String getDescription()
+}
+
+
+class manager.Launcher {
+- CollectionManager collection
+- IO_Handler console
++ void launchCollection()
+}
+
+
+enum myEnums.Country {
++  RUSSIA
++  USA
++  THAILAND
++  SOUTH_KOREA
+}
+
+class manager.StudyGroupByStudentsComparator {
++ int compare(StudyGroup,StudyGroup)
+}
+
+class terminal.Lab5ConsoleHandler {
+- Scanner scanner
+- boolean stop
+# boolean executing(String)
++ void printInfo(String)
++ void printError(String)
++ void printRequest(String)
++ String readline()
++ void stop()
++ Person readPerson()
++ StudyGroup readNewStudyGroup()
+}
+
+
+class сommand.InsertElCommand {
+- CollectionManager collection
+- Long Key
++ void getArgs(String)
++ void execute(IO_Handler)
++ String getName()
++ String getDescription()
+}
+
+
+class сommand.ExitCommand {
++ void execute(IO_Handler)
++ String getName()
++ String getDescription()
+}
+
+class сommand.FilterBySemesterEnum {
+- CollectionManager collection
+- Semester sem
++ void getArgs(String)
++ void execute(IO_Handler)
++ String getName()
++ String getDescription()
+}
+
+
+class manager.CollectionManager {
+- {static} CollectionManager singleCollection
+- Hashtable<Long,StudyGroup> studyGroups
+- LocalDateTime initializationDate
++ {static} CollectionManager createCollection()
++ Hashtable<Long,StudyGroup> getStudyGroups()
++ List<StudyGroup> getSortedCollection()
++ String getInfo()
++ void addElement(Long,StudyGroup)
++ void removeElement(Long)
++ void clearCollection()
++ boolean updateElement(IO_Handler,Long)
+}
+
+
+interface generators.IdGeneratorInterface {
++ long generateUniqueId()
+}
+
+class terminal.PersonReader {
+- IO_Handler reader
++ Person readPerson()
+}
+
+
+class model.StudyGroup {
+- long id
+- String name
+- Coordinates coordinates
+- java.time.ZonedDateTime creationDate
+- Integer studentsCount
+- Long shouldBeExpelled
+- FormOfEducation formOfEducation
+- Semester semesterEnum
+- Person groupAdmin
+- {static} IdGeneratorInterface idGenerator
++ {static} void setIdGenerator(IdGeneratorInterface)
++ void updateName(String)
++ void updateCoordinates(String)
++ void updateCoordinates(Coordinates)
++ void updateStudCount(String)
++ void updateStudCount(Integer)
++ void updateShBeExp(String)
++ void updateShBeExp(Long)
++ void updateFormOfEdu(String)
++ void updateFormOfEdu(FormOfEducation)
++ void updateSem(String)
++ void updateSem(Semester)
++ void updateAdmin(Person)
++ long getId()
++ String getName()
++ Integer getStudentsCount()
++ Long getShouldBeExp()
++ Semester getSemester()
++ Person getAdmin()
++ String getInformation()
++ int compareTo(StudyGroup)
+}
+
+
+class model.StudyGroup$Builder {
+- long id
+- String name
+- Coordinates coordinates
+- Integer studentsCount
+- Long shouldBeExpelled
+- FormOfEducation formOfEducation
+- Semester semesterEnum
+- Person groupAdmin
++ StudyGroup build()
++ Builder setName(String)
++ Builder setCoordinates(String)
++ Builder setStudCount(String)
++ Builder setStudCount(Integer)
++ Builder setShBeExp(String)
++ Builder setShBeExp(Long)
++ Builder setFormOfEdu(String)
++ Builder setSem(String)
++ Builder setAdmin(Person)
+}
+
+
+class model.StudyGroup$GroupParsers {
+~ {static} Coordinates parseCoordinates(String)
+~ {static} Integer parseStudCount(String)
+~ {static} Long parseShouldBeExpelled(String)
+~ {static} FormOfEducation parseFormOfEdu(String)
+~ {static} Semester parseSemester(String)
+}
+
+class model.StudyGroup$GroupValidations {
++ {static} void validateName(String)
++ {static} void validateIntStudCount(Integer)
++ {static} void validateLongShouldBeExpelled(Long)
++ {static} void validateAdmin(Person)
+}
+
+class model.Person {
+- String name
+- java.time.LocalDateTime birthday
+- float weight
+- String passportID
+- Country nationality
++ void updateName(String)
++ void updateBirthday(String)
++ void updateWeight(String)
++ void updatePassportID(String)
++ void updateNation(String)
++ String getName()
++ float getWeight()
++ String getPassportID()
+}
+
+
+class model.Person$Builder {
+- String name
+- java.time.LocalDateTime birthday
+- float weight
+- String passportID
+- Country nationality
++ Person build()
++ Builder setName(String)
++ Builder setBirthday(String)
++ Builder setWeight(String)
++ Builder setPassportID(String)
++ Builder setNationality(String)
+}
+
+
+class model.Person$Validations {
++ {static} void validateName(String)
++ {static} void validatePassport(String)
++ {static} void validateWeight(float)
+}
+
+class model.Person$Parsers {
+- {static} java.time.LocalDateTime parseBirthday(String)
+- {static} float parseWeight(String)
+- {static} Country parseNation(String)
+}
+
+class сommand.SaveCommand {
+- CollectionManager collection
+- String fileName
+- GroupsFileManager fileManager
++ void execute(IO_Handler)
++ String getName()
++ String getDescription()
+}
+
+
+class сommand.LoadCollection {
+- CollectionManager collection
+- String fileName
+- GroupsFileManager fileManager
+- IO_Handler console
++ void loadNewCollection()
+}
+
+
+class manager.Invoker {
+- Map<String,Command> commands
+- CollectionManager ManagersCollection
+- IO_Handler ioHandler
++ void initIOput(IO_Handler)
+- void registerCommands()
++ void addCommand(String,Command)
++ void executeCommand(String)
++ Map<String,Command> getCommands()
+}
+
+
+class myExceptions.CreationException {
+}
+class сommand.RemoveGreater {
+- CollectionManager collection
+- Long Key
+- StudyGroup choosenGroup
++ void getArgs(String)
++ void execute(IO_Handler)
++ String getName()
++ String getDescription()
+}
+
+
+interface terminal.IO_Handler {
+~ String readline()
+~ StudyGroup readNewStudyGroup()
+~ Person readPerson()
+~ void printInfo(String)
+~ void printRequest(String)
+~ void printError(String)
+~ void stop()
+}
+
+class сommand.RemoveCommand {
+- CollectionManager collection
+- Long Key
++ void getArgs(String)
++ void execute(IO_Handler)
++ String getName()
++ String getDescription()
+}
+
+
+class myExceptions.FileManagerException {
+}
+class Main {
++ {static} void main(String[])
+}
+
+class сommand.FilterStartsWithName {
+- CollectionManager collection
+- String tempName
++ void getArgs(String)
++ void execute(IO_Handler)
++ String getName()
++ String getDescription()
+}
+
+
+class generators.BasicGenerator {
+- CollectionManager manager
++ long generateUniqueId()
+}
+
+
+abstract class manager.FileManager {
+# String fileName
++ {abstract}void save(Hashtable<K,V>)
++ {abstract}Hashtable<K,V> load()
+}
+
+
+interface сommand.Command {
+~ void execute(IO_Handler)
+~ String getName()
+~ String getDescription()
+}
+
+abstract class terminal.GenericConsoleHandler {
+# T invoker
+- boolean exit
++ void start()
+# String getInput(Scanner)
+# void print(String)
+# void printCurLine(String)
+# void error(String)
+# void welcomMessage()
+# {abstract}boolean executing(String)
+}
+
+
+class сommand.UpdateIdCommand {
+- CollectionManager collection
+- Long Key
++ void getArgs(String)
++ void execute(IO_Handler)
++ String getName()
++ String getDescription()
+}
+
+
+class model.Coordinates {
+- Double x
+- double y
++ Double getX()
++ double getY()
+}
+
+
+class сommand.InfoCommand {
+- CollectionManager CollInfo
++ void execute(IO_Handler)
++ String getName()
++ String getDescription()
+}
+
+
+class сommand.HelpCommand {
+- InvokerActions invoker
++ void execute(IO_Handler)
++ String getName()
++ String getDescription()
+}
+
+
+enum myEnums.Semester {
++  FIRST
++  SECOND
++  THIRD
++  FIFTH
++  EIGHTH
+}
+
+class manager.GroupsFileManager {
+- XStream xstream
+- {static} IO_Handler errorPrinter
++ {static} void setErrorPrinter(IO_Handler)
+- XStream initXStream()
++ void save(Hashtable<Long,StudyGroup>)
++ Hashtable<Long,StudyGroup> load()
++ List<String> loadScript()
+}
+
+
+class сommand.RomoveLowerKey {
+- CollectionManager collection
+- Long Key
++ void getArgs(String)
++ void execute(IO_Handler)
++ String getName()
++ String getDescription()
+}
+
+
+class сommand.RemoveLower {
+- CollectionManager collection
+- Long Key
+- StudyGroup choosenGroup
++ void getArgs(String)
++ void execute(IO_Handler)
++ String getName()
++ String getDescription()
+}
+
+
+class сommand.ShowCommand {
+- Hashtable<Long,StudyGroup> collection
++ void execute(IO_Handler)
++ String getName()
++ String getDescription()
+}
+
+
+class сommand.PrintAscending {
+- CollectionManager collectionManager
++ void execute(IO_Handler)
++ String getName()
++ String getDescription()
+}
+
+
+
+
+myExceptions.RuntimeException <|-- myExceptions.CommandException
+сommand.Command <|.. сommand.ClearCommand
+сommand.Command <|-- сommand.CommandWithArgs
+сommand.CommandWithArgs <|.. сommand.ExecuteScriptCommand
+java.util.Comparator <|.. manager.StudyGroupByStudentsComparator
+terminal.IO_Handler <|.. terminal.Lab5ConsoleHandler
+terminal.GenericConsoleHandler <|-- terminal.Lab5ConsoleHandler
+сommand.CommandWithArgs <|.. сommand.InsertElCommand
+сommand.Command <|.. сommand.ExitCommand
+сommand.CommandWithArgs <|.. сommand.FilterBySemesterEnum
+model.Comparable <|.. model.StudyGroup
+model.StudyGroup +.. model.StudyGroup$Builder
+model.StudyGroup +.. model.StudyGroup$GroupParsers
+model.StudyGroup +.. model.StudyGroup$GroupValidations
+model.Person +.. model.Person$Builder
+model.Person +.. model.Person$Validations
+model.Person +.. model.Person$Parsers
+сommand.Command <|.. сommand.SaveCommand
+manager.InvokerActions <|.. manager.Invoker
+myExceptions.RuntimeException <|-- myExceptions.CreationException
+сommand.CommandWithArgs <|.. сommand.RemoveGreater
+сommand.CommandWithArgs <|.. сommand.RemoveCommand
+myExceptions.RuntimeException <|-- myExceptions.FileManagerException
+сommand.CommandWithArgs <|.. сommand.FilterStartsWithName
+generators.IdGeneratorInterface <|.. generators.BasicGenerator
+сommand.CommandWithArgs <|.. сommand.UpdateIdCommand
+сommand.Command <|.. сommand.InfoCommand
+сommand.Command <|.. сommand.HelpCommand
+manager.FileManager <|-- manager.GroupsFileManager
+сommand.CommandWithArgs <|.. сommand.RomoveLowerKey
+сommand.CommandWithArgs <|.. сommand.RemoveLower
+сommand.Command <|.. сommand.ShowCommand
+сommand.Command <|.. сommand.PrintAscending
+@enduml

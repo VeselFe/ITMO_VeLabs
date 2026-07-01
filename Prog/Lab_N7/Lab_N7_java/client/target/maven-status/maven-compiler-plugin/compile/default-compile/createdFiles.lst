@@ -1,0 +1,11 @@
+ru\itmo\client\clienInterfaces\IO_AuthHandler.class
+ru\itmo\client\clientTerminal\ClientConsoleHandler.class
+ru\itmo\client\clientTerminal\RequestCreator.class
+ru\itmo\client\network\NetworkManager.class
+ru\itmo\client\Client.class
+ru\itmo\client\clientTerminal\PersonReader.class
+ru\itmo\client\clientTerminal\StudyGroupReader.class
+ru\itmo\client\network\ResponseReader.class
+ru\itmo\client\clientTerminal\UpdateReader.class
+ru\itmo\client\clientTerminal\AuthManager.class
+ru\itmo\client\FileHandler\ScriptHandler.class
