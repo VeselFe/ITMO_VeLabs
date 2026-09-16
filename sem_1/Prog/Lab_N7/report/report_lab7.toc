@@ -1,0 +1,4 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{Задание}{1}{section*.1}%
+\contentsline {section}{Выполнение}{1}{section*.2}%
+\contentsline {section}{Вывод}{2}{section*.3}%
