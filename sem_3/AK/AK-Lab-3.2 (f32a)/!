@@ -1,0 +1,130 @@
+	.data
+.org 0x00
+
+	.text
+.org 0x100
+_start:	
+	lit 0x00 
+	a!
+	
+	lit 0x50
+	b!
+
+waitting:
+	@b	
+	
+	dup
+	lit 10 \ проверка на выход 
+	inv 1 + +
+	if finish
+
+	dup
+	lit 'z'	1 +	 \ ('z'+1)
+	inv	1 + +
+	-if continue \ x >= ('z'+1)
+	
+	check_sm_A
+	-if continue \ ('A'-1) >= x
+	
+	dup
+	lit 'a' inv 1 + + 	\ x - 'a'
+	-if read_symb		\ если 'a' <= x <= 'z' то точно символ
+
+	dup
+	lit 'Z' 1 + inv 1 + + 	\ x - ('Z'+1)
+	-if continue			\ 'Z' < x < 'a' то точно не символ
+
+	read_symb ;
+	continue:
+		!+						\ сохранили в буфер
+    	a  
+    	lit 0x1F inv 1 + +   \ A - 0x1F, 1F потому что еще 1 место под 0
+    	if finish  				\ Проверили что не заккончилось место   	
+		
+		waitting ;
+
+check_sm_A:
+	dup
+
+	lit 'A' 
+	lit 0 inv +	 	\ 'A'-1
+	
+	inv 1 + 		\ -('A'-1)
+	+ 				\ b - ('A'-1)
+	
+	inv 1 + 		\ ('A'-1) - b
+	;
+
+finish:
+	lit 0
+	!+
+	halt
+
+read_symb:
+	dup
+	lit 'Z' inv 1 + +		\ x - 'Z'
+	inv 1 +					\ 'Z' - x
+	-if preLoop 			\ 'Z' >= x >= 'A' 
+
+	lit 0x20 inv 1 + +		\ x - 0x20 = X
+preLoop:
+	!+						\ Сохраняем в буфер заглавную букву слова
+    a 0x1F inv 1 + +  		\ A - 0x1F
+    if finish     	
+
+	loop:
+		@b	
+		
+		dup
+		lit 10 		\ проверка на выход x - '\n' 
+		inv 1 + +
+		if finish
+	
+		dup
+		lit 'a' inv 1 + +		\ x - 'a'
+		-if check_end_of_word 	\ если x >= 'a' то смотрим не закончилось ли слово
+
+		check_sm_A				\ инчае смотрим если меньше чем 'A' то тоже ждем нового слова				
+		-if goToWaitting 		\ x < 'A'
+
+		dup
+		lit 'Z' 
+		lit 1 
+		+ 
+		inv 
+		lit 1 
+		+ 
+		+ 	\ x - ('Z'+1)
+		-if goToWaitting		\ 'Z' < x < 'a' то точно не символ
+
+		!+
+		
+    	a 0x1F inv 1 + +  		\ A - 0x1F: проверка на размер буфера
+    	if finish     	
+
+		loop ;
+		
+ 	check_end_of_word:
+		dup
+
+		lit 'z' 1 + inv 1 + +	\ x - ('z'+1)
+		-if goToWaitting 		\ если x >= 'z'+1 то это не буква и переходим к ожиданию нового слова
+		!+						\ иначе идем дальше по слову - это обычная буква
+    	
+		a 0x1F inv 1 + +  		\ A - 0x1F: проверка на размер буфера
+    	if finish     	
+
+		loop ;
+
+	goToWaitting: 
+		dup
+		!+
+    
+		lit 10 			  \ проверка на выход 
+		inv 1 + +
+		if finish	
+	
+		a 0x1F inv 1 + +  \ A - 0x1F
+    	if finish
+
+		w\\wsl$\Ubuntu\home\vese\AK\wrench\Lab_N2\lab_f32a-v2.asmaitting ;

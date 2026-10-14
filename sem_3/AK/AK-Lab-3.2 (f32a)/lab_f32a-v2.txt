@@ -1,0 +1,172 @@
+	.text
+.org 0x90
+_start:
+	lit 0x00
+	a!
+init_loop:
+	lit 0x5f
+	!+
+
+	a
+	lit 0x20 inv 1 + +
+	-if init_AB
+	
+	init_loop ;
+
+init_AB:
+	lit 0x00 
+	a!
+	
+	lit 0x80
+	b!
+
+waitting:
+	@b	
+	
+	dup
+	lit 10 \ проверка на выход 
+	inv 1 + +
+	if finish
+
+	\dup if finish \ проверка на конец потока
+
+	dup
+	lit 'z'	1 +	 \ ('z'+1)
+	inv	1 + +
+	-if continue \ x >= ('z'+1)
+	
+	check_sm_A
+	-if continue \ ('A'-1) >= x
+	
+	dup
+	lit 'a' inv 1 + + 	\ x - 'a'
+	-if read_symb		\ если 'a' <= x <= 'z' то точно символ
+
+	dup
+	lit 'Z' 1 + inv 1 + + 	\ x - ('Z'+1)
+	-if continue			\ 'Z' < x < 'a' то точно не символ
+
+	read_symb ;
+	continue:
+		dup
+		!+					\ сохранили в буфер
+						
+    	a  
+    	lit 0x20 inv 1 + +   \ A - 0x20, 1F потому что еще 1 место под 0
+    	if err_buf  		 \ Проверили что не заккончилось место   	
+		
+		waitting ;
+
+check_sm_A:
+	dup
+
+	lit 'A' 
+	lit 0 inv +	 	\ 'A'-1
+	
+	inv 1 + 		\ -('A'-1)
+	+ 				\ b - ('A'-1)
+	
+	inv 1 + 		\ ('A'-1) - b
+	;
+
+finish:
+	lit 0x5F5F5F00
+	!+
+	
+	lit 0x00 
+	a!
+	
+	print_loop:
+		@+         
+		
+		dup
+		lit 0xff
+		and
+		dup
+		if prlp_end 
+		!p 0x84     
+		
+		print_loop ;
+	prlp_end:
+		halt
+
+err_buf:
+	lit 0x84 b!
+	lit 0xCCCCCCCC !b
+	halt
+
+read_symb:
+	dup
+	lit 'Z' inv 1 + +		\ x - 'Z'
+	inv 1 +					\ 'Z' - x
+	-if preLoop 			\ 'Z' >= x >= 'A' 
+
+	lit 0x20 inv 1 + +		\ x - 0x20 = X
+preLoop:
+	dup
+	!+						\ Сохраняем в буфер заглавную букву слова
+						
+    a 
+	lit 0x20 inv 1 + +  		\ A - 0x20
+    if err_buf     	
+
+	loop:
+		@b	
+		
+		dup
+		lit 10 		\ проверка на выход x - '\n' 
+		inv 1 + +
+		if finish
+		\dup if finish \ проверка на конец потока
+	
+		dup
+		lit 'a' inv 1 + +		\ x - 'a'
+		-if check_end_of_word 	\ если x >= 'a' то смотрим не закончилось ли слово
+
+		check_sm_A				\ инчае смотрим если меньше чем 'A' то тоже ждем нового слова				
+		-if goToWaitting 		\ x < 'A'
+
+		dup
+		lit 'Z' 1 + inv 1 + + 	\ x - ('Z'+1)
+		-if goToWaitting		\ 'Z' < x < 'a' то точно не символ
+
+		lit 0x20 +
+
+		dup
+		!+
+		
+    	a lit 0x20 inv 1 + +  		\ A - 0x20: проверка на размер буфера
+    	if err_buf     	
+
+		loop ;
+		
+ 	check_end_of_word:
+		dup
+
+		lit 'z' 1 + inv 1 + +	\ x - ('z'+1)
+		-if goToWaitting 		\ если x >= 'z'+1 то это не буква и переходим к ожиданию нового слова
+		dup
+		!+						\ иначе идем дальше по слову - это обычная буква
+    	
+		a 
+		lit 0x20 inv 1 + +  		\ A - 0x20: проверка на размер буфера
+    	if err_buf     	
+
+		loop ;
+
+	goToWaitting: 
+		\ dup if finish \ проверка на конец потока
+		
+		dup
+		lit 10 	  \ проверка на выход 
+		inv 1 + +
+		if finish	
+	
+		dup
+		!+
+
+		a 
+		lit 0x20 inv 1 + +  \ A - 0x20
+    	if err_buf
+
+		waitting ;

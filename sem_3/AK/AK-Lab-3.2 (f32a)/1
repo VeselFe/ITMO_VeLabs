@@ -1,0 +1,19 @@
+name: lab-2
+isa: f32a
+limit: 1000
+memory_size: 0x1000
+memory_mapped_io:
+    0x50: [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 10]
+reports:
+  - name: Step-by-step
+    slice: all
+    view: |
+      {pc}: {instruction:next} {pc:label} | B={B:hex} A={A:hex} T={T:dec}
+  - name: Result
+    slice: last
+    view: |
+      numio[0x50]: {io:0x50:dec}
+      {memory:0:16}
+    assert: |
+      numio[0x50]: [] >>> []
+      mem[0..16]: 48 65 6c 6c 6f 20 57 6f 72 6c 64 00 00 00 00 00
