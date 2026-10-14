@@ -1,13 +1,13 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>ВЕБ. Лабораторная №1</title>
+    <title>ВЕБ. Лабораторная №2</title>
     <link rel="stylesheet" href="css/lab1-styles.css">
 </head>
 <body>
 
     <div class="box" id="titleBox">
-        <h1>Веселов Фёдор Евгеньевич, P3132, Вариант: 22657 </h1>
+        <h1>Веселов Фёдор Евгеньевич, P3232, Вариант: 22657 </h1>
     </div>
     <br />
     <div class="content">
@@ -16,7 +16,6 @@
         <form id="parameters"> 
             <label for="coord_X"> Изменение X : </label>
                 <div class="xGroup">
-                    <button type="button" class="buttonX" value="-5"> -5 </button>
                     <button type="button" class="buttonX" value="-4"> -4 </button>
                     <button type="button" class="buttonX" value="-3"> -3 </button>
                     <button type="button" class="buttonX" value="-2"> -2 </button>
@@ -25,6 +24,7 @@
                     <button type="button" class="buttonX" value="1"> 1   </button>      
                     <button type="button" class="buttonX" value="2"> 2   </button> 
                     <button type="button" class="buttonX" value="3"> 3   </button>
+                    <button type="button" class="buttonX" value="4"> 4   </button>
                 </div>
             <label for="coord_Y"> Изменение Y : </label>
                 <input type="text" maxlength="8" name="coord_Y" id="coord_Y" placeholder="-3...5" /> 
@@ -40,21 +40,25 @@
         </form>
     </div>
     <br/>
-    <table id="results">
-        <thead>
-            <tr>
-                <th> X </th>
-                <th> Y </th>
-                <th> R </th>
-                <th> Res </th>
-                <th> Время </th>
-            </tr>
-        </thead>
-        <tbody id="res-body"></tbody>
-    </table>
+    <div id="table-container">
+        <table id="results">
+            <thead>
+                <tr>
+                    <th> X </th>
+                    <th> Y </th>
+                    <th> R </th>
+                    <th> Res </th>
+                    <th> Время </th>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
 
-    <script src="js/CreateField.js"></script>
-    <script src="js/Storage.js"></script>
+    </div>
+    
+    
+    <script src="js/CreateTable.js"></script>
     <script src="js/CheckPoint.js"></script>
+    <script src="js/CreateField.js"></script>
 </body>
 </html>

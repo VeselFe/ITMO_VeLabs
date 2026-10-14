@@ -7,6 +7,33 @@ const height = 175;
 const canvas = document.getElementById("canvas");
 const creatorField = canvas.getContext("2d");
 
+// квадрат
+ creatorField.fillStyle = "#5BC0EB";
+ creatorField.fillRect(X0, Y0, R, -R/2);
+
+// Треугольник
+creatorField.beginPath();
+creatorField.moveTo(X0, Y0);
+creatorField.lineTo(X0 - R/2, Y0);
+creatorField.lineTo(X0, Y0 - R/2);
+creatorField.closePath();
+creatorField.fillStyle = "#5BC0EB";
+creatorField.fill();
+
+// Сектор круга
+creatorField.beginPath();
+creatorField.moveTo(X0, Y0);
+creatorField.arc(
+    X0,
+    Y0,
+    R,
+    0,
+    Math.PI / 2
+);
+creatorField.closePath();
+creatorField.fillStyle = "#5BC0EB";
+creatorField.fill();
+
 // Оси
 creatorField.beginPath();
 creatorField.moveTo(X0, Y0);
@@ -36,38 +63,11 @@ creatorField.closePath();
 creatorField.fillStyle = "#000";
 creatorField.fill();
 
-// Метк возле стрлок
+// Метки возле стрлок
 creatorField.font = "14px Arial";
 creatorField.fillStyle = "#000";
 creatorField.fillText("X", X0 + weight - 15, Y0 - 10);
 creatorField.fillText("Y", X0 + 10, Y0 - height + 15);
-
-// квадрат
-creatorField.fillStyle = "#5BC0EB";
-creatorField.fillRect(X0, Y0, -R, R);
-
-// Треугольник
-creatorField.beginPath();
-creatorField.moveTo(X0, Y0);
-creatorField.lineTo(X0, Y0 + R/2);
-creatorField.lineTo(X0 + R/2, Y0);
-creatorField.closePath();
-creatorField.fillStyle = "#5BC0EB";
-creatorField.fill();
-
-// Сектор круга
-creatorField.beginPath();
-creatorField.moveTo(X0, Y0);
-creatorField.arc(
-    X0,
-    Y0,
-    R / 2,
-    Math.PI,
-    Math.PI * 1.5
-);
-creatorField.closePath();
-creatorField.fillStyle = "#5BC0EB";
-creatorField.fill();
 
 drawMarks(creatorField, X0, Y0, R);
 
