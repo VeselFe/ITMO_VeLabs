@@ -1,0 +1,10 @@
+extern exit
+extern string_length
+extern print_string
+extern print_char
+extern print_newline
+extern string_equals
+extern read_char
+extern read_word
+extern print_err
+extern read_line

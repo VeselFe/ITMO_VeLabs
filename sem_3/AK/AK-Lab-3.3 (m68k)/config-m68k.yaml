@@ -1,0 +1,25 @@
+name: Lab m68k
+limit: 2000
+memory_size: 0x1000
+memory_mapped_io:
+  0x80: [12,2863315899,3435973836,3722304989] 
+  0x84: []
+reports:
+  - name: Step-by-step
+    slice: ["tail", 72]
+    view: |
+      {pc}:	{D1:hex} {D2:hex} {D5:dec} {instruction:next}	{pc:label} 
+  - name: Result
+    slice: last
+    view: |
+      numio[0x80]: {io:0x80:dec}
+      numio[0x84]: {io:0x84:dec}
+      numio[0x84]: {io:0x84:hex}
+    assert: |
+      numio[0x80]: [] >>> []
+      numio[0x84]: [] >>> [8,44696251,80479453]
+      numio[0x84]: [] >>> [0x00000008,0x02aa02bb,0x04cc04dd]
+  - name: Memory
+    slice: last
+    view: |
+      {memory:0x22A:0x23D}

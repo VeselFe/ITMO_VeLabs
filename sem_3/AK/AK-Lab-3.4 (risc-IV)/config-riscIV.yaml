@@ -1,0 +1,27 @@
+name: Lab risc-iv
+limit: 2000
+memory_size: 0x188
+memory_mapped_io:
+  0x80: [100000000]
+  0x84: []
+reports:
+  - name: check-initialisation
+    slice: [head, 3]
+    view: |
+      {pc}:	{instruction:next}	{pc:label}
+              S1 : {S1:hex} 
+              S2 : {S2:hex}
+              S3 : {S3:dec}
+  - name: step-by-step
+    slice: all
+    view: |
+      {pc}:	{instruction:next}	{pc:label}
+              A0 = {A0:dec}<dec> {A0:hex}<hex>	{pc:label}
+  - name: result
+    slice: last
+    view: |
+      numio[0x80]: {io:0x80:dec}
+      numio[0x84]: {io:0x84:dec}
+    assert: |
+      numio[0x80]: [] >>> []
+      numio[0x84]: [] >>> [5]
